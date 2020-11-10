@@ -82,6 +82,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
                         }).setNeutralButton("Help", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
                         Toast.makeText(context, "Open Help Activity", Toast.LENGTH_SHORT).show();
                     }
                 }).setNeutralButton("NO", new DialogInterface.OnClickListener() {
