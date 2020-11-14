@@ -7,6 +7,9 @@ public class OrdersModel {
     String orderItemDescription;
 
     int orderItemImage;
+
+
+    int orderItemQuantity;
     String OrderItemNumber;
     String OrderItemName;
     public OrdersModel(String orderItemFoodName, String orderItemNumber, String orderItemPrice, String orderItemDescription, int orderItemImage) {
@@ -76,6 +79,14 @@ public class OrdersModel {
     public void setOrderItemDescription(String orderItemDescription) {
         this.orderItemDescription = orderItemDescription;
     }
+    public int getOrderItemQuantity() {
+        return orderItemQuantity;
+    }
+
+    public void setOrderItemQuantity(int orderItemQuantity) {
+        this.orderItemQuantity = orderItemQuantity;
+    }
+
 
     public String getOrderItemNumber() {
         return OrderItemNumber;

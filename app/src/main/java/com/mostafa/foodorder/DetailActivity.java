@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,6 +23,33 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
        final DbHelper dbHelper = new DbHelper(this);
 //        int type = getIntent().getIntExtra("type", 0);
+
+        binding.plusItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int qty  = Integer.parseInt(binding.quantity.getText().toString());
+                qty++;
+                binding.quantity.setText(qty+"");
+
+                Toast.makeText(DetailActivity.this, "Quantity"+qty, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        binding.itemRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int qty  = Integer.parseInt(binding.quantity.getText().toString());
+                Log.d("abc","quantity"+qty);
+                if (qty>1) {
+                    qty--;
+                    binding.quantity.setText(qty + "");
+                    Toast.makeText(DetailActivity.this, "Quantity " + qty, Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(DetailActivity.this, "Negative value is not allow" + qty, Toast.LENGTH_SHORT).show();
+
+            }
+        });
         if (getIntent().getIntExtra("type", 0)==1) {
             final int image = getIntent().getIntExtra("image", 0);
             final int price = Integer.parseInt(getIntent().getStringExtra("price"));
@@ -74,7 +102,7 @@ public class DetailActivity extends AppCompatActivity {
                 public void onClick(View view) {
 // public boolean  orderUpdate(String name, String phone, int price,String foodName, String description,int image,int quantity,int id) {
 
-                        boolean isUpdated = dbHelper.orderUpdate(
+                         boolean isUpdated = dbHelper.orderUpdate(
                                 binding.orderPersonName.getText().toString(),
                                 binding.txtPhoneNumber.getText().toString(),
                                 Integer.parseInt(binding.totalPrice.getText().toString()),

@@ -1,5 +1,4 @@
 package com.mostafa.foodorder.Adapters;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,34 +9,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mostafa.foodorder.Db.DbHelper;
 import com.mostafa.foodorder.DetailActivity;
 import com.mostafa.foodorder.Models.OrdersModel;
 import com.mostafa.foodorder.R;
-
 import java.util.ArrayList;
-
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder> {
     Context context;
     ArrayList<OrdersModel> list;
-
     public OrdersAdapter(Context context, ArrayList<OrdersModel> list) {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View  view = LayoutInflater.from(context).inflate(R.layout.sample_order ,parent ,false);
         return new OrdersAdapter.viewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull viewHolder vh, int position) {
 //   viewHolder e age set kora hoise field er resource
@@ -47,6 +38,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
         vh.price.setText(model.getOrderItemPrice());
         vh.invoiceNumber.setText(model.getOrderItemNumber());
         vh.description.setText(model.getOrderItemDescription());
+//        vh.qty.setText(model.getOrderItemQuantity());
         vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,13 +50,12 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
 
         });
         vh.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-
             @Override
             public boolean onLongClick(View view) {
                 new AlertDialog.Builder(context)
                         .setTitle("Delete Item box")
                         .setIcon(R.drawable.ic_baseline_remove_circle_24)
-                        .setMessage("Are you want to deleted this item")
+                        .setMessage("Are you want to deleted this item ")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -111,19 +102,15 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
     public class viewHolder extends RecyclerView.ViewHolder {
 //        step1
         ImageView imageView;
-        TextView name,price,description,invoiceNumber;
+        TextView name,price,description,invoiceNumber, qty;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.image);
             name = itemView.findViewById(R.id.orderName);
             price = itemView.findViewById(R.id.orderPrice);
             description =itemView.findViewById(R.id.orderDescription);
+            qty =itemView.findViewById(R.id.quantity);
             invoiceNumber =itemView.findViewById(R.id.invoiceNumber);
-
-
         }
     }
-
-
 }
