@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.mostafa.foodorder.Db.DbHelper;
 import com.mostafa.foodorder.databinding.ActivityDetailsBinding;
-import com.mostafa.foodorder.databinding.ActivityMainBinding;
+//import com.mostafa.foodorder.databinding.ActivityMainBinding;
 
 public class DetailActivity extends AppCompatActivity {
  ActivityDetailsBinding binding;
